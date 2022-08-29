@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:github_search_app/core/router_name.dart';
 
 import '../controllers/repo cubit/repo_cubit.dart';
 import '../controllers/search bloc/search_bloc.dart';
-import '../controllers/search bloc/search_bloc.dart';
-import '../model/repository_response_model.dart';
+import '../models/repository_response_model.dart';
 import 'repo_detail_page.dart';
 import 'search_screen.dart';
 

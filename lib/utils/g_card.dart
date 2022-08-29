@@ -18,7 +18,7 @@ class GCard extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    //final theme = Theme.of(context);
     return Container(
       width: width,
       margin: margin,

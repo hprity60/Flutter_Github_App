@@ -2,25 +2,23 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../modules/model/repository_response_model.dart';
+import '../../../modules/models/repository_response_model.dart';
 
 abstract class LocalDataSource {
-  
   Future<bool> cacheListsResponse(
       RepositoryResponseModel repositoryResponseModel);
   List<RepositoryResponseModel> getRepoResponseModel();
+  Future<bool> clearList();
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
- 
   final SharedPreferences sharedPreferences;
 
   LocalDataSourceImpl({required this.sharedPreferences});
 
   @override
   List<RepositoryResponseModel> getRepoResponseModel() {
-    final jsonString =
-        sharedPreferences.getString('cachedListResponseKey');
+    final jsonString = sharedPreferences.getString('cachedListResponseKey');
     if (jsonString != null) {
       return repositoryResponseModelFromJson(jsonString);
     } else {
@@ -32,15 +30,12 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<bool> cacheListsResponse(
       RepositoryResponseModel repositoryResponseModel) {
     return sharedPreferences.setString(
-      'cachedListResponseKey',
-      jsonEncode(json)
-    );
+        'cachedListResponseKey', jsonEncode(repositoryResponseModel));
   }
 
-  Future<void> cacg() async {
-   var res =  <RepositoryResponseModel>[];
-    var prefs = await SharedPreferences.getInstance();
-    prefs.setString("bookmarks", jsonEncode(res));
+  @override
+  Future<bool> clearList() {
+    return sharedPreferences.remove('cachedListResponseKey');
   }
 }
 

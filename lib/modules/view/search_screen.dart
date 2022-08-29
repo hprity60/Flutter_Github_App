@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:github_search_app/modules/model/response_body_model.dart';
 import '../../../utils/utility.dart';
 import '../controllers/search bloc/search_bloc.dart';
 
 class GithubRepoSearch extends SearchDelegate<List> {
   SearchBloc searchBloc;
 
-  int page = 1;
+  int page;
 
-  int perPage = 40;
+  int perPage;
 
-  String sort = 'stars';
-  String order = 'dsce';
+  String sort;
+  String order;
 
   GithubRepoSearch({
     required this.searchBloc,
@@ -58,7 +57,7 @@ class GithubRepoSearch extends SearchDelegate<List> {
     queryString = query;
 
     searchBloc.add(SearchEventSearch(query, sort, page, perPage, order));
-    List<Item> item = [];
+    //List<Item> item = [];
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (BuildContext context, SearchState state) {
         if (state is SearchStateLoading) {
@@ -80,32 +79,27 @@ class GithubRepoSearch extends SearchDelegate<List> {
             children: [
               TextButton(
                 onPressed: () {
-                  searchBloc.add(SearchEventSearch(
-                    query,
-                    'asce',
-                    50,
-                    60,
-                    'forks',
-                  ));
+                  searchBloc.add(
+                      SearchEventSearch(query, 'asce', perPage, page, order));
                 },
-                child: Text('Sort by star'),
+                child: const Text('Sort by star'),
               ),
               TextButton(
                 onPressed: () {
                   searchBloc.add(
-                      SearchEventSearch(query, sort, perPage, page, order));
+                      SearchEventSearch(query, 'dsce', perPage, page, order));
                 },
-                child: Text('Sort by updated'),
+                child: const Text('Sort by updated'),
               ),
               Flexible(
                 child: ListView.separated(
                     separatorBuilder: (context, index) {
-                      return Divider(
+                      return const Divider(
                         color: Colors.blue,
                         height: 15,
                       );
                     },
-                    physics: BouncingScrollPhysics(),
+                    physics:const BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         onTap: () {},
@@ -128,27 +122,27 @@ class GithubRepoSearch extends SearchDelegate<List> {
                               // ),
                               Text(
                                   "${state.items![index].stargazersCount} Starts"),
-                              SizedBox(height: 16),
+                             const SizedBox(height: 16),
                               Text(
                                 "${state.items![index].forksCount!} Forks",
                                 style: Theme.of(context).textTheme.bodyText1,
                               ),
-                              SizedBox(height: 4),
+                             const SizedBox(height: 4),
 
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
 
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 3),
                                 child: Icon(Icons.star,
                                     size: 20, color: Colors.yellowAccent[700]),
                               ),
-                              SizedBox(width: 10),
+                             const SizedBox(width: 10),
                               // Text(
                               //   "${items[index].st
                               //   stargazers.totalCount}",
                               //   style: Theme.of(context).textTheme.subtitle2,
                               // ),
-                              SizedBox(width: 20),
+                             const SizedBox(width: 20),
                               const Icon(
                                 Icons.blur_circular,
                                 color: Colors.yellow,
@@ -156,7 +150,7 @@ class GithubRepoSearch extends SearchDelegate<List> {
                                 //languages.nodes.first.color,
                                 size: 15,
                               ),
-                              SizedBox(width: 5),
+                             const SizedBox(width: 5),
                               Text(
                                 "${state.items![index].description}",
                                 //.languages.nodes.first.name}",

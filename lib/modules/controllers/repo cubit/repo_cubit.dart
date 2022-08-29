@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:github_search_app/core/data/repositories/repo_list_repositories.dart';
 import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../model/repository_response_model.dart';
-import 'package:github_search_app/modules/model/response_body_model.dart';
+import '../../../core/data/remote datasource/repositories/remote_repositories.dart';
+import '../../models/repository_response_model.dart';
 
 part 'repo_state.dart';
 
@@ -12,7 +10,7 @@ class RepoCubit extends Cubit<RepoState> {
 
   RepoCubit(this.repository) : super(RepoInitial());
   int page = 1;
-  final RepoListRepository repository;
+  final ApiRepositories repository;
 
   void loadPosts() async {
     if (state is RepoLoading) return;
