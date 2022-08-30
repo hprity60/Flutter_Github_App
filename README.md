@@ -2,15 +2,19 @@
 
 A new Flutter project.
 
-## Getting Started
+# Project Dependescise:
+- flutter bloc
+- equatable
+- http
+- stream transfer
+- intl
+- hive
 
-This project is a starting point for a Flutter application.
+Home Screen
+![home screen](https://user-images.githubusercontent.com/104090144/187445869-819cb751-325c-4b5a-82f0-33693c42d524.PNG)
 
-A few resources to get you started if this is your first Flutter project:
+Detail Screen
+![detail screen](https://user-images.githubusercontent.com/104090144/187446056-b1116274-88ad-490b-ba0e-336db84ce65a.PNG)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Search Screen
+![search screen](https://user-images.githubusercontent.com/104090144/187446184-220fab72-36fc-4a02-aa4b-1e02c95618b9.PNG)
