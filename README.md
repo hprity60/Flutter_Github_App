@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-# Project Dependescise:
+# Project Dependencise:
 - flutter bloc
 - equatable
 - http
@@ -18,3 +18,7 @@ Detail Screen
 
 Search Screen
 ![search screen](https://user-images.githubusercontent.com/104090144/187446184-220fab72-36fc-4a02-aa4b-1e02c95618b9.PNG)
+
+Uncompleted task:
+- Offline mode
+- Sorting button not working properly
